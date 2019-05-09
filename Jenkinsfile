@@ -4,10 +4,11 @@ pipeline {
         skipStagesAfterUnstable()
     }
     
+
     stages {
             stage('Deliver for development') {
                         when {
-                           branch = 'dev' 
+                            expression { params.gitbranch == 'dev' }
                         }
                         steps {
                             sh 'sh /opt/deploy/a.sh dev'
